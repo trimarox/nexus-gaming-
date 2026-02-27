@@ -1,105 +1,44 @@
-NEXUS/
- ├─ index.html           ← Home page
- ├─ games.html           ← Play games
- ├─ store.html           ← Affiliate products
- ├─ tournaments.html     ← Tournaments page
- ├─ community.html       ← Community page
- ├─ assets/
- │    ├─ images/         ← All images
- │    ├─ css/            ← Custom CSS if needed
- │    └─ js/             ← Custom JS if needed
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS | Ultimate Gaming Platform</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Rajdhani', sans-serif; background-color: #0a0a0f; color: white; }
-    .font-orbitron { font-family: 'Orbitron', sans-serif; }
-    a { text-decoration: none; }
-    .button { padding: 12px 24px; border-radius: 6px; font-weight: bold; transition: 0.3s; }
-    .button-cyan { background: #00f3ff; color: black; }
-    .button-cyan:hover { background: #00c8ff; }
-    .button-purple { background: #bc13fe; color: white; }
-    .button-purple:hover { background: #a30fe0; }
-  </style>
-</head>
-<body class="antialiased">
-
-  <!-- Navigation -->
-  <nav class="p-4 flex justify-between items-center border-b border-cyan-500/20">
-    <div class="font-orbitron font-bold text-2xl">NEXUS</div>
-    <div class="space-x-4">
-      <a href="index.html">Home</a>
-      <a href="games.html">Games</a>
-      <a href="tournaments.html">Tournaments</a>
-      <a href="community.html">Community</a>
-      <a href="store.html">Store</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="text-center p-12">
-    <h1 class="font-orbitron text-6xl mb-4">ENTER THE VOID</h1>
-    <p class="text-gray-400 mb-6">Compete in global tournaments, connect with elite players, and dominate the leaderboard.</p>
-    <div class="space-x-4">
-      <a href="games.html" class="button button-cyan">START GAME</a>
-      <a href="https://www.youtube.com/watch?v=YOUR_TRAILER" target="_blank" class="button button-purple">WATCH TRAILER</a>
-    </div>
-
-    <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 max-w-4xl mx-auto">
-      <div class="text-center">
-        <div class="text-4xl font-orbitron font-bold text-cyan-400">2M+</div>
-        <div class="text-gray-500 text-sm">Active Players</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl font-orbitron font-bold text-purple-400">150+</div>
-        <div class="text-gray-500 text-sm">Tournaments</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl font-orbitron font-bold text-pink-400">$5M</div>
-        <div class="text-gray-500 text-sm">Prize Pool</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl font-orbitron font-bold text-green-400">24/7</div>
-        <div class="text-gray-500 text-sm">Live Support</div>
-      </div>
-    </div>
-  </section>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Games | NEXUS</title>
+  <title>Tournaments | NEXUS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-black text-white font-orbitron p-6">
-  <nav class="mb-8">
-    <a href="index.html" class="mr-4">Home</a>
-    <a href="games.html">Games</a>
+
+  <nav class="mb-8 border-b border-cyan-500/20 pb-4">
+    <a href="index.html" class="mr-4 text-cyan-400">Home</a>
+    <a href="games.html" class="mr-4">Games</a>
+    <a href="tournaments.html" class="mr-4 text-purple-400">Tournaments</a>
+    <a href="community.html" class="mr-4">Community</a>
+    <a href="store.html">Store</a>
   </nav>
 
-  <h1 class="text-4xl mb-6">Play Games</h1>
+  <h1 class="text-4xl mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">Live Tournaments</h1>
 
-  <!-- Game 1 -->
-  <div class="mb-8">
-    <h2 class="text-2xl mb-2">CYBER STRIKE</h2>
-    <iframe src="https://example.com/play-game" width="100%" height="500"></iframe>
+  <!-- Live Tournament -->
+  <div class="border border-red-500/50 rounded-xl p-6 mb-6 bg-red-900/10">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+      <span class="text-red-400 text-sm">LIVE NOW</span>
+    </div>
+    <h2 class="text-2xl mb-2">World Championship 2026</h2>
+    <p class="text-gray-400 mb-4">Finals • Prize Pool: $500,000</p>
+    <div class="flex items-center gap-4">
+      <span class="text-cyan-400">Team Liquid</span>
+      <span class="text-gray-500">VS</span>
+      <span class="text-pink-400">Fnatic</span>
+    </div>
+    <button class="mt-4 bg-red-600 px-6 py-2 rounded">Watch Live</button>
   </div>
 
-  <!-- Game 2 -->
-  <div class="mb-8">
-    <h2 class="text-2xl mb-2">ARENA X</h2>
-    <iframe src="https://example.com/play-game2" width="100%" height="500"></iframe>
+  <!-- Upcoming -->
+  <div class="border border-gray-700 rounded-xl p-6">
+    <h2 class="text-xl mb-4">Upcoming Events</h2>
+    <p class="text-gray-400">Rising Stars Cup - Tomorrow 8PM</p>
   </div>
 
 </body>
@@ -109,27 +48,46 @@ NEXUS/
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Store | NEXUS</title>
+  <title>Community | NEXUS</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-black text-white p-6 font-orbitron">
+<body class="bg-black text-white font-orbitron p-6">
 
-  <nav class="mb-8">
-    <a href="index.html" class="mr-4">Home</a>
+  <nav class="mb-8 border-b border-cyan-500/20 pb-4">
+    <a href="index.html" class="mr-4 text-cyan-400">Home</a>
+    <a href="games.html" class="mr-4">Games</a>
+    <a href="tournaments.html" class="mr-4">Tournaments</a>
+    <a href="community.html" class="mr-4 text-purple-400">Community</a>
     <a href="store.html">Store</a>
   </nav>
 
-  <h1 class="text-4xl mb-6">Affiliate Products</h1>
+  <h1 class="text-4xl mb-6">Join the Community</h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="border p-4 rounded">
-      <img src="assets/images/headset.jpg" alt="Headset" class="mb-2">
-      <h2 class="text-xl mb-2">Pro Gaming Headset</h2>
-      <p class="text-gray-400 mb-2">Top quality headset for FPS gamers.</p>
-      <a href="YOUR_AFFILIATE_LINK" target="_blank" class="bg-cyan-500 text-black px-4 py-2 rounded">Buy Now</a>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Discord -->
+    <a href="https://discord.gg/yourlink" target="_blank" class="border border-indigo-500/50 rounded-xl p-6 hover:bg-indigo-900/20 transition">
+      <h2 class="text-2xl mb-2 text-indigo-400">Discord Server</h2>
+      <p class="text-gray-400">450,000+ members online</p>
+    </a>
+
+    <!-- Telegram -->
+    <a href="https://t.me/yourchannel" target="_blank" class="border border-cyan-500/50 rounded-xl p-6 hover:bg-cyan-900/20 transition">
+      <h2 class="text-2xl mb-2 text-cyan-400">Telegram</h2>
+      <p class="text-gray-400">Daily updates & drops</p>
+    </a>
+  </div>
+
+  <!-- Live Chat -->
+  <div class="mt-8 border border-gray-700 rounded-xl p-6">
+    <h2 class="text-2xl mb-4">Live Chat</h2>
+    <div class="bg-gray-900 rounded p-4 h-64 overflow-y-auto mb-4">
+      <p class="text-cyan-400 text-sm mb-2">NeonViper: Just hit Radiant rank! 🎉</p>
+      <p class="text-purple-400 text-sm mb-2">CyberX: Anyone up for ranked?</p>
+      <p class="text-pink-400 text-sm">Phantom: That tournament was insane!</p>
     </div>
+    <input type="text" placeholder="Type a message..." class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2">
   </div>
 
 </body>
 </html>
-tournaments.html & community.html
