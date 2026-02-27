@@ -1,363 +1,135 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>NEXUS | Ultimate Gaming Platform</title>  
-    <script src="https://cdn.tailwindcss.com"></script>  
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">  
-    <style>  
-        :root {  
-            --neon-cyan: #00f3ff;  
-            --neon-pink: #ff00ff;  
-            --neon-purple: #bc13fe;  
-            --dark-bg: #0a0a0f;  
-        }  body {  
-        font-family: 'Rajdhani', sans-serif;  
-        background-color: var(--dark-bg);  
-        color: white;  
-        overflow-x: hidden;  
-    }  
-      
-    .font-orbitron {  
-        font-family: 'Orbitron', sans-serif;  
-    }  
-      
-    /* Custom Scrollbar */  
-    ::-webkit-scrollbar {  
-        width: 8px;  
-    }  
-    ::-webkit-scrollbar-track {  
-        background: #0a0a0f;  
-    }  
-    ::-webkit-scrollbar-thumb {  
-        background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));  
-        border-radius: 4px;  
-    }  
-      
-    /* Glitch Effect */  
-    .glitch {  
-        position: relative;  
-        animation: glitch-skew 1s infinite linear alternate-reverse;  
-    }  
-    .glitch::before,  
-    .glitch::after {  
-        content: attr(data-text);  
-        position: absolute;  
-        top: 0;  
-        left: 0;  
-        width: 100%;  
-        height: 100%;  
-    }  
-    .glitch::before {  
-        left: 2px;  
-        text-shadow: -2px 0 #ff00c1;  
-        clip: rect(44px, 450px, 56px, 0);  
-        animation: glitch-anim 5s infinite linear alternate-reverse;  
-    }  
-    .glitch::after {  
-        left: -2px;  
-        text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;  
-        animation: glitch-anim2 1s infinite linear alternate-reverse;  
-    }  
-      
-    @keyframes glitch-anim {  
-        0% { clip: rect(31px, 9999px, 94px, 0); }  
-        20% { clip: rect(68px, 9999px, 9px, 0); }  
-        40% { clip: rect(15px, 9999px, 82px, 0); }  
-        60% { clip: rect(89px, 9999px, 14px, 0); }  
-        80% { clip: rect(23px, 9999px, 67px, 0); }  
-        100% { clip: rect(56px, 9999px, 31px, 0); }  
-    }  
-    @keyframes glitch-anim2 {  
-        0% { clip: rect(65px, 9999px, 99px, 0); }  
-        20% { clip: rect(12px, 9999px, 43px, 0); }  
-        40% { clip: rect(78px, 9999px, 11px, 0); }  
-        60% { clip: rect(34px, 9999px, 56px, 0); }  
-        80% { clip: rect(91px, 9999px, 23px, 0); }  
-        100% { clip: rect(5px, 9999px, 88px, 0); }  
-    }  
-      
-    /* Neon Glows */  
-    .neon-text {  
-        text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);  
-    }  
-    .neon-border {  
-        box-shadow: 0 0 10px var(--neon-cyan), inset 0 0 10px var(--neon-cyan);  
-    }  
-    .neon-box:hover {  
-        box-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple);  
-        transform: translateY(-5px);  
-    }  
-      
-    /* Grid Background */  
-    .cyber-grid {  
-        background-image:   
-            linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px),  
-            linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);  
-        background-size: 50px 50px;  
-        mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);  
-    }  
-      
-    /* Particle Canvas */  
-    #particles {  
-        position: fixed;  
-        top: 0;  
-        left: 0;  
-        width: 100%;  
-        height: 100%;  
-        z-index: -1;  
-        pointer-events: none;  
-    }  
-      
-    /* Game Card Hover */  
-    .game-card {  
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);  
-    }  
-    .game-card:hover {  
-        transform: scale(1.05) rotateY(5deg);  
-    }  
-    .game-card:hover .game-overlay {  
-        opacity: 1;  
-    }  
-      
-    /* Scanline Effect */  
-    .scanlines {  
-        background: linear-gradient(  
-            to bottom,  
-            rgba(255,255,255,0),  
-            rgba(255,255,255,0) 50%,  
-            rgba(0,0,0,0.2) 50%,  
-            rgba(0,0,0,0.2)  
-        );  
-        background-size: 100% 4px;  
-        position: fixed;  
-        top: 0;  
-        left: 0;  
-        right: 0;  
-        bottom: 0;  
-        pointer-events: none;  
-        z-index: 9999;  
-        opacity: 0.3;  
-    }  
-      
-    /* Animated Gradient Border */  
-    .gradient-border {  
-        position: relative;  
-        background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,  
-                    linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple)) border-box;  
-        border: 2px solid transparent;  
-        animation: rotate-gradient 3s linear infinite;  
-    }  
-    @keyframes rotate-gradient {  
-        0% { filter: hue-rotate(0deg); }  
-        100% { filter: hue-rotate(360deg); }  
-    }  
-      
-    /* Navigation Blur */  
-    .nav-blur {  
-        backdrop-filter: blur(20px);  
-        background: rgba(10, 10, 15, 0.8);  
-    }  
-      
-    /* Custom Cursor */  
-    .cursor-glow {  
-        width: 20px;  
-        height: 20px;  
-        border: 2px solid var(--neon-cyan);  
-        border-radius: 50%;  
-        position: fixed;  
-        pointer-events: none;  
-        z-index: 9999;  
-        transition: transform 0.1s;  
-        box-shadow: 0 0 20px var(--neon-cyan);  
-    }  
-</style>
+NEXUS/
+ ├─ index.html           ← Home page
+ ├─ games.html           ← Play games
+ ├─ store.html           ← Affiliate products
+ ├─ tournaments.html     ← Tournaments page
+ ├─ community.html       ← Community page
+ ├─ assets/
+ │    ├─ images/         ← All images
+ │    ├─ css/            ← Custom CSS if needed
+ │    └─ js/             ← Custom JS if needed
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS | Ultimate Gaming Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Rajdhani', sans-serif; background-color: #0a0a0f; color: white; }
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    a { text-decoration: none; }
+    .button { padding: 12px 24px; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+    .button-cyan { background: #00f3ff; color: black; }
+    .button-cyan:hover { background: #00c8ff; }
+    .button-purple { background: #bc13fe; color: white; }
+    .button-purple:hover { background: #a30fe0; }
+  </style>
+</head>
+<body class="antialiased">
 
-</head>  
-<body class="antialiased selection:bg-cyan-500 selection:text-black">  <!-- Particle Background -->  
-<canvas id="particles"></canvas>  
-  
-<!-- Scanline Overlay -->  
-<div class="scanlines"></div>  
-  
-<!-- Custom Cursor -->  
-<div class="cursor-glow hidden md:block" id="cursor"></div>  
+  <!-- Navigation -->
+  <nav class="p-4 flex justify-between items-center border-b border-cyan-500/20">
+    <div class="font-orbitron font-bold text-2xl">NEXUS</div>
+    <div class="space-x-4">
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="community.html">Community</a>
+      <a href="store.html">Store</a>
+    </div>
+  </nav>
 
-<!-- Navigation -->  
-<nav class="fixed w-full z-50 nav-blur border-b border-cyan-500/20">  
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
-        <div class="flex items-center justify-between h-20">  
-            <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">  
-                <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-lg transform group-hover:rotate-12 transition-transform flex items-center justify-center">  
-                    <span class="font-orbitron font-bold text-xl">N</span>  
-                </div>  
-                <span class="font-orbitron font-bold text-2xl tracking-wider glitch" data-text="NEXUS">NEXUS</span>  
-            </div>  
-              
-            <div class="hidden md:block">  
-                <div class="ml-10 flex items-baseline space-x-8">  
-                    <a href="#games" class="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium tracking-widest uppercase">Games</a>  
-                    <a href="#tournaments" class="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium tracking-widest uppercase">Tournaments</a>  
-                    <a href="#community" class="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium tracking-widest uppercase">Community</a>  
-                    <a href="#store" class="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium tracking-widest uppercase">Store</a>  
-                </div>  
-            </div>  
-              
-            <div class="flex items-center gap-4">  
-                <button class="hidden md:block px-6 py-2 border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black transition-all duration-300 rounded-full font-bold tracking-wider text-sm uppercase">  
-                    Login  
-                </button>  
-                <button class="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] transition-all duration-300 rounded-full font-bold tracking-wider text-sm uppercase">  
-                    Play Now  
-                </button>  
-            </div>  
-        </div>  
-    </div>  
-</nav>  
+  <!-- Hero Section -->
+  <section class="text-center p-12">
+    <h1 class="font-orbitron text-6xl mb-4">ENTER THE VOID</h1>
+    <p class="text-gray-400 mb-6">Compete in global tournaments, connect with elite players, and dominate the leaderboard.</p>
+    <div class="space-x-4">
+      <a href="games.html" class="button button-cyan">START GAME</a>
+      <a href="https://www.youtube.com/watch?v=YOUR_TRAILER" target="_blank" class="button button-purple">WATCH TRAILER</a>
+    </div>
 
-<!-- Hero Section -->  
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">  
-    <div class="cyber-grid absolute inset-0 opacity-30"></div>  
-      
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">  
-        <div class="mb-6 inline-block">  
-            <span class="px-4 py-1 rounded-full border border-cyan-500/30 text-cyan-400 text-sm tracking-[0.3em] uppercase bg-cyan-500/10 backdrop-blur-sm">  
-                Next Gen Gaming  
-            </span>  
-        </div>  
-          
-        <h1 class="font-orbitron text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight">  
-            <span class="block glitch" data-text="ENTER THE">ENTER THE</span>  
-            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 glitch" data-text="VOID">VOID</span>  
-        </h1>  
-          
-        <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-400 font-light tracking-wide">  
-            Immerse yourself in the ultimate gaming experience. Compete in global tournaments, connect with elite players, and dominate the leaderboard.  
-        </p>  
-          
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">  
-            <button class="group relative px-8 py-4 bg-cyan-500 text-black font-bold text-lg rounded-none overflow-hidden transition-all hover:scale-105">  
-                <span class="relative z-10 flex items-center gap-2">  
-                    START GAME  
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>  
-                </span>  
-                <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>  
-            </button>  
-              
-            <button class="px-8 py-4 border border-purple-500 text-purple-400 hover:bg-purple-500/10 transition-all font-bold text-lg rounded-none flex items-center gap-2">  
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>  
-                WATCH TRAILER  
-            </button>  
-        </div>  
-          
-        <!-- Stats -->  
-        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">  
-            <div class="text-center group cursor-pointer">  
-                <div class="text-4xl font-orbitron font-bold text-cyan-400 group-hover:scale-110 transition-transform">2M+</div>  
-                <div class="text-sm text-gray-500 uppercase tracking-widest mt-2">Active Players</div>  
-            </div>  
-            <div class="text-center group cursor-pointer">  
-                <div class="text-4xl font-orbitron font-bold text-purple-400 group-hover:scale-110 transition-transform">150+</div>  
-                <div class="text-sm text-gray-500 uppercase tracking-widest mt-2">Tournaments</div>  
-            </div>  
-            <div class="text-center group cursor-pointer">  
-                <div class="text-4xl font-orbitron font-bold text-pink-400 group-hover:scale-110 transition-transform">$5M</div>  
-                <div class="text-sm text-gray-500 uppercase tracking-widest mt-2">Prize Pool</div>  
-            </div>  
-            <div class="text-center group cursor-pointer">  
-                <div class="text-4xl font-orbitron font-bold text-green-400 group-hover:scale-110 transition-transform">24/7</div>  
-                <div class="text-sm text-gray-500 uppercase tracking-widest mt-2">Live Support</div>  
-            </div>  
-        </div>  
-    </div>  
-      
-    <!-- Floating Elements -->  
-    <div class="absolute top-1/4 left-10 w-32 h-32 border border-cyan-500/20 rounded-full animate-pulse hidden lg:block"></div>  
-    <div class="absolute bottom-1/4 right-10 w-48 h-48 border border-purple-500/20 rounded-full animate-pulse hidden lg:block" style="animation-delay: 1s;"></div>  
-</section>  
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 max-w-4xl mx-auto">
+      <div class="text-center">
+        <div class="text-4xl font-orbitron font-bold text-cyan-400">2M+</div>
+        <div class="text-gray-500 text-sm">Active Players</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-orbitron font-bold text-purple-400">150+</div>
+        <div class="text-gray-500 text-sm">Tournaments</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-orbitron font-bold text-pink-400">$5M</div>
+        <div class="text-gray-500 text-sm">Prize Pool</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-orbitron font-bold text-green-400">24/7</div>
+        <div class="text-gray-500 text-sm">Live Support</div>
+      </div>
+    </div>
+  </section>
 
-<!-- Featured Games -->  
-<section id="games" class="py-24 relative">  
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16">  
-            <div>  
-                <h2 class="font-orbitron text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">  
-                    FEATURED GAMES  
-                </h2>  
-                <p class="text-gray-400 max-w-xl">Explore our curated collection of competitive and immersive gaming experiences.</p>  
-            </div>  
-            <button class="mt-6 md:mt-0 text-cyan-400 hover:text-cyan-300 flex items-center gap-2 group">  
-                View All Games  
-                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>  
-            </button>  
-        </div>  
-          
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">  
-            <!-- Game Card 1 -->  
-            <div class="game-card group relative h-96 rounded-2xl overflow-hidden cursor-pointer">  
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900">  
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700"></div>  
-                </div>  
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90"></div>  
-                <div class="absolute bottom-0 left-0 right-0 p-6">  
-                    <div class="flex items-center gap-2 mb-2">  
-                        <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded border border-cyan-500/30">FPS</span>  
-                        <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded border border-purple-500/30">RANKED</span>  
-                    </div>  
-                    <h3 class="font-orbitron text-2xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">CYBER STRIKE</h3>  
-                    <p class="text-gray-400 text-sm mb-4">Tactical 5v5 shooter with advanced movement mechanics</p>  
-                    <div class="flex items-center justify-between">  
-                        <div class="flex items-center gap-2">  
-                            <div class="flex -space-x-2">  
-                                <div class="w-8 h-8 rounded-full bg-gray-600 border-2 border-black"></div>  
-                                <div class="w-8 h-8 rounded-full bg-gray-500 border-2 border-black"></div>  
-                                <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-black"></div>  
-                            </div>  
-                            <span class="text-xs text-gray-500">+2.4k playing</span>  
-                        </div>  
-                        <button class="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center text-black hover:scale-110 transition-transform">  
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>  
-                        </button>  
-                    </div>  
-                </div>  
-            </div>  
-              
-            <!-- Game Card 2 -->  
-            <div class="game-card group relative h-96 rounded-2xl overflow-hidden cursor-pointer">  
-                <div class="absolute inset-0 bg-gradient-to-br from-red-900 to-orange-900">  
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700"></div>  
-                </div>  
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90"></div>  
-                <div class="absolute bottom-0 left-0 right-0 p-6">  
-                    <div class="flex items-center gap-2 mb-2">  
-                        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded border border-red-500/30">MOBA</span>  
-                        <span class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded border border-orange-500/30">LIVE</span>  
-                    </div>  
-                    <h3 class="font-orbitron text-2xl font-bold mb-2 group-hover:text-red-400 transition-colors">ARENA X</h3>  
-                    <p class="text-gray-400 text-sm mb-4">Strategic team battles in a futuristic arena</p>  
-                    <div class="flex items-center justify-between">  
-                        <div class="flex items-center gap-2">  
-                            <div class="flex -space-x-2">  
-                                <div class="w-8 h-8 rounded-full bg-gray-600 border-2 border-black"></div>  
-                                <div class="w-8 h-8 rounded-full bg-gray-500 border-2 border-black"></div>  
-                            </div>  
-                            <span class="text-xs text-gray-500">+5.1k playing</span>  
-                        </div>  
-                        <button class="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-black hover:scale-110 transition-transform">  
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>  
-                        </button>  
-                    </div>  
-                </div>  
-            </div>  
-              
-            <!-- Game Card 3 -->  
-            <div class="game-card group relative h-96 rounded-2xl overflow-hidden cursor-pointer">  
-                <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-teal-900">  
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552820728-8b83bb6b2b0a?w=800&q=80')] bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700"></div>  
-                </div>  
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90"></div>  
-                <div class="absolute bottom-0 left-0 right-0 p-6">  
-                    <div class="flex items-center gap-2 mb-2">
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games | NEXUS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-orbitron p-6">
+  <nav class="mb-8">
+    <a href="index.html" class="mr-4">Home</a>
+    <a href="games.html">Games</a>
+  </nav>
 
-This is my gaming site code
-How can I deploy it on netlify and start using it
+  <h1 class="text-4xl mb-6">Play Games</h1>
+
+  <!-- Game 1 -->
+  <div class="mb-8">
+    <h2 class="text-2xl mb-2">CYBER STRIKE</h2>
+    <iframe src="https://example.com/play-game" width="100%" height="500"></iframe>
+  </div>
+
+  <!-- Game 2 -->
+  <div class="mb-8">
+    <h2 class="text-2xl mb-2">ARENA X</h2>
+    <iframe src="https://example.com/play-game2" width="100%" height="500"></iframe>
+  </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store | NEXUS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white p-6 font-orbitron">
+
+  <nav class="mb-8">
+    <a href="index.html" class="mr-4">Home</a>
+    <a href="store.html">Store</a>
+  </nav>
+
+  <h1 class="text-4xl mb-6">Affiliate Products</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="border p-4 rounded">
+      <img src="assets/images/headset.jpg" alt="Headset" class="mb-2">
+      <h2 class="text-xl mb-2">Pro Gaming Headset</h2>
+      <p class="text-gray-400 mb-2">Top quality headset for FPS gamers.</p>
+      <a href="YOUR_AFFILIATE_LINK" target="_blank" class="bg-cyan-500 text-black px-4 py-2 rounded">Buy Now</a>
+    </div>
+  </div>
+
+</body>
+</html>
+tournaments.html & community.html
